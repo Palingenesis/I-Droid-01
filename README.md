@@ -1,4 +1,4 @@
-# I-Droid-01
+# I-Droid 01
 Programs I have written for the robot "I-Droid 01"
 Details are here: [I-Droid 01](https://timsblogplace.blogspot.com/2020/12/i-droid-01.html)
 
