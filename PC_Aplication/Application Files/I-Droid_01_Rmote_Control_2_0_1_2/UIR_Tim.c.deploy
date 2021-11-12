@@ -1,0 +1,249 @@
+
+/*
+
+	 For use with Tim's I-Droid:01 Remote Controller for the PC.
+
+	 This program needs the Infrared Remote Control tool installed on the left arm of the robot.
+	 I-Droid:01 needs to learn codes for infrared signals corresponding to index numbers 0 to 21.
+
+	 Author Tim Jackson.1960
+	 Version 1.0
+
+			All Infrared signals learned by I-Droid:01 are indexed to a number ranging from 0 to 250
+
+			I-Droid:01 does not know what to do when it recieves an Infrared signal.
+
+			A User Program has to be written to use the indexed signals I-D01 has lerned, to activate a corrosponding function.
+
+			I have written a User Program that can be Uploaded, Compiled and run; That will perform functions when reciving Signals alocated to the first 22 indexed signals leared by I-Droi:01.
+			To make it easy to know what functions are alocated to each index number, I have done a Preset selection list to use when teaching I-Droid:01 Infrared Signals.
+
+			If you want to make your own User Program and need to use more signals, there is the basic indexing option.
+
+	(00) Stop
+	(01) Forward normal
+	(02) Forward quick
+	(03) Backward normal
+	(04) Backward quick
+	(05) Right 45
+	(06) Right 90
+	(07) Left 45
+	(08) Left 90
+	(09) Rotate Right 180
+	(10) Rotate Left 180
+	(11) Right Arm Up
+	(12) Right Arm Down
+	(13) Left Arm Up
+	(14) Left Arm Down
+	(15) Look Ahead
+	(16) Look Up
+	(17) Look Down
+	(18) Look Left 45
+	(19) Look Left 90
+	(20) Look Right 45
+	(21) Look Right 90
+
+			During the Learning process,
+			I-Droid:01 will speak and display instructions on the LCD.
+
+			1. Chose an Index/Function from the index options on the right.
+			2. Click Learn Signal Button.
+				LCD Shows:
+					Learn Cmd <index number>
+					Press a key!
+			3. Point Your Remote at the IR Tool and press the button you want to use for this Index/Function.
+				LCD Shows:
+					Learn Cmd <index number>
+					First Learning done!
+					4. Wait for next mesage on LCD.
+				LCD Shows:
+					Learn Cmd <index number>
+					Press again!
+			5. Point Your Remote at the IR Tool and press the same button again.
+				LCD Shows:
+					Learn Cmd <index number>
+					Learninig done!
+
+			Repeat for all the functions you want I-Droid:01 to learn.
+
+				After Teaching I-Droid:01 the required Infrared Signals.
+				Upload a User Progam to a User Program index of your choise.
+				The button will upload my User program
+				that uses the preset choices.
+				After uploading the User program.
+				Compile and run from the main Aplication window.
+				Or you can use the buttons on I-Doid:01 chest.
+
+				I just use a cheep remote of eBay.
+				I have noticed I-Droid:01 may have issues
+				with some buttons  on the cheep remotes.
+
+				Any Universal Infrared Remote will do.
+				TV or an old Vedo remote should do.
+
+
+		Note about code.
+		I have commented out toggle IR.
+
+ */
+
+#include "c-like.h"
+#include "robot.h"
+#include <stdio.h>
+
+int NumberOfCommands = 22;// Remember Index starts a Zero. (this variable dose not work for arrays with clike, this value should be the same in arrays below)
+int IndexNumber = 0;
+void DisplayProgramName();
+
+urc_t ir_codes[22];//Array for infrared codes. (value = NumberOfCommands)
+//urc_t ir_toggles[22];//Array for toggle codes. (value = NumberOfCommands)
+
+declare(behavior(WaitIR));
+define(behavior(Main)) {
+
+	DisplayProgramName();
+	char file_name[80];// file has 153 bytes, typical name = 001.dat
+	int i = 0;
+
+	while (i < NumberOfCommands) {// codes into Arrays
+
+		//Infrared codes from: /mnt/disk/ircodes folder, name format <3 figure number>.dat eg. 001.dat.
+		sprintf(file_name, "/mnt/disk/ircodes/%03d.dat", i);
+		urc_load(&ir_codes[i], file_name);
+
+		////Toggle codes from: /mnt/disk/ircodes folder, name format <3 figure number>_t.dat eg. 001_t.dat.
+		//sprintf(file_name, "/mnt/disk/ircodes/%03d_t.dat", i);
+		//urc_load(&ir_toggles[i], file_name);
+
+		i++;
+	}
+
+	start(WaitIR);//Start WaitIR to listen for Infrared Signals.
+}
+
+define(behavior(WaitIR)) {
+
+	int i = 0;
+	IndexNumber = 0;
+
+	local(urc) = wait_for(urc, update);//Wait for an Infrared Signal and copy it to the local Array urc.
+
+	while (i < NumberOfCommands) {//Compare the received signal with signals Learned by I-Droid:01.
+		//if (ir_compare(&local(urc), &ir_codes[i]) || ir_compare(&local(urc), &ir_toggles[i])) {
+		if (ir_compare(&local(urc), &ir_codes[i])) {
+
+			IndexNumber = i;//Identify matching index.
+			break;
+		}
+		i++;
+	}
+
+	switch (IndexNumber) {//Pick which function to do.
+
+	case 0://Stop
+		move_speed(0);
+		hand_stop();
+		break;
+
+	case 1://Forward normal
+		move_speed(50);
+		break;
+
+	case 2://Forward quick
+		move_speed(100);
+		break;
+
+	case 3://Backward normal
+		move_speed(-50);
+		break;
+
+	case 4://Backward quick
+		move_speed(-100);
+		break;
+
+	case 5://Right 45
+		turn(45, 50);
+		break;
+
+	case 6://Right 90
+		turn(90, 50);
+		break;
+
+	case 7://Left 45
+		turn(45, -50);
+		break;
+
+	case 8://Left 90
+		turn(90, -50);
+		break;
+
+	case 9://Rotate Right 180
+		turn(180, 50);
+		break;
+
+	case 10://Rotate Left 180
+		turn(180, -50);
+		break;
+
+	case 11://Right Arm Up
+		right_arm(15);
+		break;
+
+	case 12://Right Arm Down
+		right_arm(0);
+		break;
+
+	case 13://Left Arm Up
+		left_arm(15);
+		break;
+
+	case 14://Left Arm Down
+		left_arm(0);
+		break;
+
+	case 15://Look Look Ahead
+		head_pan(6);
+		head_tilt(2);
+		break;
+
+	case 16://Look Up
+		head_tilt(4);
+		break;
+
+	case 17://Look Down
+		head_tilt(0);
+		break;
+
+	case 18://Look Left 45
+		head_pan(3);
+		break;
+
+	case 19://Look Left 90
+		head_pan(0);
+		break;
+
+	case 20://Look Right 45
+		head_pan(9);
+		break;
+
+	case 21://Look Right 90
+		head_pan(12);
+		break;
+
+	default://Stop
+		move_speed(0);
+		hand_stop();
+		break;
+	}
+}
+
+void DisplayProgramName()
+{
+/*
+	Display Name on LCD
+
+*/
+	lcd_clear();
+	lcd_write_string(1, 1, "   IR Control");
+	lcd_write_string(2, 1, " by Tim Jackson");
+}

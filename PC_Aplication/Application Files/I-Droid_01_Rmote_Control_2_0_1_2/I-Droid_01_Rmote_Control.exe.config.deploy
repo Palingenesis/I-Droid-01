@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="I_Droid_01_Rmote_Control.My.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+    <startup>
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+    </startup>
+    <userSettings>
+        <I_Droid_01_Rmote_Control.My.MySettings>
+            <setting name="CameraResalution_ComboBox" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="Main_Location" serializeAs="String">
+                <value>0, 0</value>
+            </setting>
+            <setting name="Connected" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="Port_Text" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="Baud_Text" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="IDroidComSpeed" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="VideoEnabled_CheckBox" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="FileEnabled_CheckBox" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="I2C_ModRegEnabled_CheckBox" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="I2C_ModEnabled_CheckBox" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="LinkArms_CheckBox" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="Link_LEDs_CheckBox" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="SonarOn_CheckBox" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="ObstacleAvoidance_CheckBox" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="SonarState" serializeAs="String">
+                <value>11</value>
+            </setting>
+            <setting name="ChasisOn_CheckBox" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="CameraAutoExposure_CheckBox" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="CameraAutoWB_CheckBox" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="CameraSightTracking_CheckBox" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="CameraInterpolation_CheckBox" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="DriveForwardContinuous_RadioButton" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="DriveSpeedNormal_RadioButton" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="DriveSpeedLink_CheckBox" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="DriveSpeedPID_CheckBox" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="DriveSpeedLeft_pc" serializeAs="String">
+                <value>200</value>
+            </setting>
+            <setting name="DriveSpeedRight_pc" serializeAs="String">
+                <value>200</value>
+            </setting>
+            <setting name="DriveSpeedLeft_cmps" serializeAs="String">
+                <value>250</value>
+            </setting>
+            <setting name="DriveSpeedRight_cmps" serializeAs="String">
+                <value>250</value>
+            </setting>
+            <setting name="DriveSpeedQuick_RadioButton" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="DriveSpeedAdjustable_RadioButton" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="DriveForwardDistance_RadioButton" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="DriveDistance_NumericUpDown" serializeAs="String">
+                <value>10</value>
+            </setting>
+            <setting name="Phrase_ComboBox" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="Sound_ComboBox" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="Behavior_CheckBox1" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="Behavior_CheckBox2" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="Behavior_CheckBox3" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="Behavior_CheckBox4" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="Behavior_CheckBox5" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="Behavior_CheckBox6" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="LCD_Top_Row_TextBox" serializeAs="String">
+                <value>     Hello</value>
+            </setting>
+            <setting name="LCD_Bot_Row_TextBox" serializeAs="String">
+                <value>  How are You?</value>
+            </setting>
+            <setting name="MessageNumber_NumericUpDown" serializeAs="String">
+                <value>1</value>
+            </setting>
+            <setting name="Programs_NumericUpDown" serializeAs="String">
+                <value>1</value>
+            </setting>
+            <setting name="Form_IDroid_FileExplorer_location" serializeAs="String">
+                <value>0, 0</value>
+            </setting>
+            <setting name="IMG_FilePath" serializeAs="String">
+                <value>C:\</value>
+            </setting>
+            <setting name="Form_Teach_UIR" serializeAs="String">
+                <value>0, 0</value>
+            </setting>
+            <setting name="ProgramIndex_NumericUpDown" serializeAs="String">
+                <value>10</value>
+            </setting>
+        </I_Droid_01_Rmote_Control.My.MySettings>
+    </userSettings>
+</configuration>
